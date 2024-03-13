@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <form action="{{ url_for('bmi_calculator.calculate_bmi') }}" method="post">
+        <label for="height">Height (cm):</label>
+        <input type="number" name="height" id="height" required>
+        <br>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" name="weight" id="weight" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" required>
+        <br>
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <button type="submit">Calculate BMI</button>
+    </form>
+
+    <!-- Display admin functionalities and statistics here -->
+    <div class="admin-section">
+        <h2>Admin Section</h2>
+        <p>Logged in as: Admin</p>
+        <p>Statistics:</p>
+        <ul>
+            <li>Total number of BMI calculations: {{ total_calculations }}</li>
+            <li>Most common age group: {{ most_common_age }}</li>
+            <li>Most common gender: {{ most_common_gender }}</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BMI Calculator. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
